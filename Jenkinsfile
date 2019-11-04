@@ -10,7 +10,7 @@ stages{
       }
     }
     stage('Test') {
-          agent { docker 'centos:latest' }
+          agent { docker 'centos' }
       steps {
         echo 'Testing... On Centos'
         sh 'cat /etc/centos-release'
