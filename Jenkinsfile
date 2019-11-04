@@ -1,24 +1,19 @@
 pipeline {
-  agent {
-    docker {
-      image 'alpine'
-      args '-p 3000:3000'
-    }
-
-  }
-  stages {
-    stage('Build') {
-      steps {
-        echo 'Building...'
-        sh '''     echo "Database engine is ${DB_ENGINE}"
-
-
-                echo "DISABLE_AUTH is ${DISABLE_AUTH}"'''
+  agent none 
+    
+stages{ 
+	stage('Build') { 
+		agent { docker 'alpine:latest' }
+        steps {
+       	echo 'Building...'
+        sh 'cat /etc/alpine-release'
       }
     }
     stage('Test') {
+          agent { docker 'centos:latest' }
       steps {
-        echo 'Testing...'
+        echo 'Testing... On Centos'
+        sh 'cat /etc/centos-release'
       }
     }
     stage('Deploy') {
