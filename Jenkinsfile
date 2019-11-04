@@ -1,11 +1,5 @@
 pipeline {
-  agent {
-    docker {
-      image 'alpine'
-      args '-p 3000:3000'
-    }
-
-  }
+  agent none
   stages {
     stage('Build') {
       steps {
@@ -29,5 +23,6 @@ pipeline {
   }
   environment {
     DB_ENGINE = 'sqlite'
+    agent = 'docker'
   }
 }
