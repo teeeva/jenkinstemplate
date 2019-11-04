@@ -24,5 +24,6 @@ stages{
   }
   environment {
     DB_ENGINE = 'sqlite'
+    agent = 'docker'
   }
 }
